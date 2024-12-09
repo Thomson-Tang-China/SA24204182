@@ -1,0 +1,19 @@
+Package: SA24204182
+Type: Package
+Title: A Comprehensive Toolkit for Linear Regression and Feature Selection
+Version: 1.0
+Date: 2024-12-08
+Author: Thomson Tang
+Maintainer: Thomson Tang <405094648@qq.com>
+Description: The 'SA24204182' package provides a set of functions for performing linear regression, feature selection, and model evaluation, with an emphasis on data standardization and optimization techniques. Key functionalities include fitting linear regression models, selecting features based on correlation thresholds, calculating R² and MSE for model performance, and applying gradient descent with regularization for model parameter optimization.
+License: GPL (>= 2)
+Imports: Rcpp (>= 1.0.13)
+LinkingTo: Rcpp
+RoxygenNote: 7.3.2
+Encoding: UTF-8
+VignetteBuilder: knitr
+Suggests:
+    knitr,
+    rmarkdown
+URL: https://github.com/Thomson-Tang-China/SA24204182
+BugReports: https://github.com/Thomson-Tang-China/SA24204182/issues

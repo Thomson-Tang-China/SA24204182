@@ -1,0 +1,57 @@
+---
+title: "my-vignette"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{my-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup}
+# Load the package and required libraries
+library(SA24204182)
+library(Rcpp)
+
+# Load the mtcars dataset and prepare the data
+data(mtcars)
+
+# Use 'mpg' (miles per gallon) as the target variable (y)
+X <- mtcars[, -1]  # Features (exclude the target variable)
+y <- mtcars$mpg    # Target variable (miles per gallon)
+
+# Standardize the data
+X_standardized <- standardize_data(X)
+
+# Check the first few rows of the standardized data
+head(X_standardized)
+
+# Create a formula dynamically based on the column names in X_standardized
+formula <- as.formula(paste("y ~", paste(names(X_standardized), collapse = " + ")))
+
+# Fit the linear regression model using the standardized data
+model <- linear_regression(data = cbind(y, X_standardized), formula = formula)
+
+# Display the model summary
+summary(model)
+# Feature selection based on correlation with the target variable
+selected_features <- select_features(X_standardized, y, threshold = 0.2)
+
+# Display the selected features
+selected_features
+# Make predictions using the linear regression model
+predictions <- predict(model, newdata = X_standardized)
+
+# Calculate R²
+r2_value <- calculate_r2(y_true = y, y_pred = predictions)
+
+# Calculate MSE
+mse_value <- calculate_mse(y_true = y, y_pred = predictions)
+
+# Display R² and MSE
+r2_value
+mse_value
+
+
+```
+
+

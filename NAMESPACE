@@ -1,0 +1,16 @@
+# 导入需要的包
+#' @import microbenchmark
+#' @importFrom Rcpp evalCpp
+
+# 导出每个 R 函数
+export(standardize_data)
+export(linear_regression)
+export(select_features)
+
+# C++函数导出（通过Rcpp接口）
+useDynLib(SA24204182, .registration = TRUE)
+
+# 导出C++函数
+export(calculate_r2)
+export(calculate_mse)
+export(gradient_descent_with_regularization)
